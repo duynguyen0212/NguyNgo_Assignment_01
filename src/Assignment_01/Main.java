@@ -1,10 +1,10 @@
-package Assignment_01;
-import java.util.Scanner;
-/**
+/*
  * Name: Ngoc Duy Nguyen
  * Date: January 25th, 2022
  * Description: CS321_Assignment_01
  */
+package Assignment_01;
+import java.util.Scanner;
 public class Main {
     /**Determine if two arrays are equal*/
     public static void equalArray(int[]a, int[]b){
@@ -26,18 +26,17 @@ public class Main {
         a[i] = arr[i];
         return a;
     }
-
     /** Calculate the sum of the rows in 2D array*/
     public static void calculateMatrix(int[][] b, int cols, int rows){
-        int[] rowsSum = new int[cols];
-        for(int i=0; i<cols; i++) {
+        int[] rowsSum = new int[rows];
+        for(int i=0; i<rows; i++) {
             int sum = 0;
-            for (int j = 0; j < rows; j++)
+            for (int j = 0; j < cols; j++)
             {
                 sum += b[i][j];
             }
             rowsSum[i] = sum;
-            System.out.println("Sum in row number " + i + " is: " + rowsSum[i]);
+            System.out.println("-> Sum in row number " + (i+1) + " is: " + rowsSum[i]);
         }
     }
     /** Calculate hamming distance of two arrays*/
@@ -48,9 +47,8 @@ public class Main {
             if( a[i] != b[i])
                 counter++;
         }
-        System.out.print("Hamming distance of two arrays is " + counter);
+        System.out.print("-> Hamming distance of two arrays is " + counter);
     }
-
     /**Binary search*/
     public static void binarySearch(int[] c, int target){
         int first = 0, last = c.length-1;
@@ -59,7 +57,7 @@ public class Main {
             if (c[mid] < target)
                 first = mid + 1;
             else if ( c[mid] == target ){
-                System.out.println("Element is found at index: " + mid);
+                System.out.println("-> Element is found at index: " + mid);
                 break;
             }
             else
@@ -68,22 +66,19 @@ public class Main {
             mid = (first + last)/2;
         }
         if (first > last){
-            System.out.println("Element is not found!");
+            System.out.println("-> Element is not found!");
         }
     }
-
     /**
      * Main function
      * @param args Execute methods for Assignment_01
      */
-
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         int length;
         System.out.println("1. Determine if two arrays are equal");
         System.out.print("Please input length of the array: ");
         length = input.nextInt();
-
         int[] array1 = new int[length];
         int[] array2 = new int[length];
 
@@ -115,7 +110,7 @@ public class Main {
         elements = input.nextInt();
 
         int[] copyArray = copyArray(temp, elements);
-        System.out.print("New array copied from array" + a + " is: ");
+        System.out.print("-> New array copied from Array" + a + " is: ");
         for(int i=0; i<elements; i++)
             System.out.print(copyArray[i] + " ");
 
@@ -129,11 +124,11 @@ public class Main {
         System.out.print("Please enter number of column:");
         cols = input.nextInt();
 
-        int[][] matrix = new int[cols][rows];
+        int[][] matrix = new int[rows][cols];
         System.out.println("Please enter value of 2D array:");
 
-        for(int i=0; i<cols;i++)
-            for(int j=0; j<rows; j++)
+        for(int i=0; i<rows;i++)
+            for(int j=0; j<cols; j++)
                 matrix[i][j] = input.nextInt();
 
         calculateMatrix(matrix, cols, rows);
